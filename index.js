@@ -22,7 +22,7 @@ var reservation = [{
 }, {
 	customerName: 'John Doe',
 	phoneNumber: '9194567891',
-	customerEmail: 'johndoe@gmail.com,
+	customerEmail: 'johndoe@gmail.com',
 	customerID: '8983'
 }, {
 	customerName: 'Charlie Brown',
@@ -39,8 +39,8 @@ app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname, 'home.html'));
 });
 
-app.get('/table', function (req, res) {
-	res.sendFile(path.join(__dirname, 'table.html'));
+app.get('/tables', function (req, res) {
+	res.sendFile(path.join(__dirname, 'tables.html'));
 });
 
 app.get('/reserve', function (req, res) {
@@ -68,9 +68,9 @@ app.get('/api/:reservation?', function (req, res) {
 });
 
 // Create New Characters - takes in JSON input
-app.post('/api/newReservation', function (req, res) {
+app.post('/api/tables', function (req, res) {
 	var newReservation = req.body;
-	newReservation.routeName = newReservation.name.replace(/\s+/g, '').toLowerCase();
+	newReservation.routeName = newReservation.customerName.replace(/\s+/g, '').toLowerCase();
 
 	console.log(newReservation);
 
